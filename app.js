@@ -7,11 +7,14 @@ require('dotenv/config');
 
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
 // Import routes
 
 const routes = require('./routes/routes.js');
 
 // Middleware
+app.use(cors())
 app.use(bodyParser.json());
 app.use('/post', routes);
 
