@@ -5,15 +5,9 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config')
 
-// Routes
+// Import routes
 
-app.get('/', ( req, res ) => {
-  res.send('This is an example of basic rest api...')
-})
-
-app.get('/home', ( req, res ) => {
-  res.send('We are on home...')
-})
+const routes = require('./routes/routes.js');
 
 // Connect to DB
 
