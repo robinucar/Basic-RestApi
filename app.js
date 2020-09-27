@@ -9,6 +9,10 @@ require('dotenv/config')
 
 const routes = require('./routes/routes.js');
 
+// Middleware
+
+app.use('/home', routes);
+
 // Connect to DB
 
 mongoose.connect(

@@ -8,8 +8,11 @@ router.get('/', ( req, res ) => {
   res.send('This is an example of basic rest api...')
 });
 
-router.get('/home', ( req, res ) => {
-  res.send('We are on home...')
+router.get('/spesific', ( req, res ) => {
+  res.send(' Spesific ...')
 });
+
+
+
 
 module.exports = router;
