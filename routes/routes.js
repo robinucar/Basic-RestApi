@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 
-// routes
+// ROUTES
 
+// get back all the posts
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find();
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
     res.json({message: err});
   }
 });
-
+// submit a post
 router.post('/', async (req, res) => {
   const post = new Post({
     title: req.body.title,
@@ -26,5 +27,16 @@ router.post('/', async (req, res) => {
     res.json({ message: err });
   }
 });
+
+// spesific posts
+
+router.get('/:postId', async (req,res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({message: err})
+  }
+})
 
 module.exports = router;
