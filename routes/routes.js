@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     const posts = await Post.find();
     res.json(posts);
   } catch (err) {
-    res.json({message: err});
+    res.json({ message: err });
   }
 });
 // submit a post
@@ -30,25 +30,38 @@ router.post('/', async (req, res) => {
 
 // spesific posts
 
-router.get('/:postId', async (req,res) => {
+router.get('/:postId', async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId);
     res.json(post);
   } catch (err) {
-    res.json({message: err})
+    res.json({ message: err });
   }
-})
+});
 
 module.exports = router;
 
-
 //Delete post
 
-router.delete('/:postId', async (req,res) => {
+router.delete('/:postId', async (req, res) => {
   try {
-    const deletePost = await Post.remove({_id: req.params.postId });
-    res.json(deletePost)
+    const deletePost = await Post.remove({ _id: req.params.postId });
+    res.json(deletePost);
   } catch (err) {
-    res.json({message: err})
+    res.json({ message: err });
   }
-})
+});
+
+//Update post
+
+router.patch('/:postId', async (req, res) => {
+  try {
+    const updatedPost = await Post.updateOne(
+      { _id: req.params.postId },
+      { $set: { title: req.body.title } }
+    );
+    res.json(updatedPost);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
