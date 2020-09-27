@@ -1,6 +1,7 @@
 const express = require('express');
-
 const router = express.Router();
+const Post = require('../models/Post');
+
 
 // routes
 
@@ -8,9 +9,9 @@ router.get('/', ( req, res ) => {
   res.send('This is an example of basic rest api...')
 });
 
-router.get('/spesific', ( req, res ) => {
-  res.send(' Spesific ...')
-});
+router.post('/', (req,res) => {
+  console.log(req.body);
+})
 
 
 
